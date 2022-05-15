@@ -403,11 +403,11 @@ void allocator_entry::set_occupied(bool occupied) {
 
 А ведь и правда, зачем он нам нужен? Ведь имея указатель на память, мы вполне можем просто сдвинуться назад на размер заголовка, и освободить его.
 
-![How to get entry by pointer to memory](free_with_no_loop.png "Locating entry by pointer")
+![How to get entry by pointer to memory](free_without_loop.png "Locating entry by pointer")
 
 К следующему блоку нам перейти тоже не проблема, а вот к предыдущему уже более проблематично. Как быть? Давайте обрамлять выделенный участок памяти с двух сторон. Это вполне сработает.
 
-![How to go back to the previous entry by pointer to memory](free_with_no_loop.png "Locating previous entry by pointer")
+![How to go back to the previous entry by pointer to memory](free_without_loop.png "Locating previous entry by pointer")
 
 Сдвигаемся на 8 байт назад чтобы получить наш собственный размер блока. Сдвигаемся на ещё 8 байт назад, чтобы получить размер предыдущего блока. Теперь мы знаем какого размера сам предыдущий блок, и можем сдвинуться ещё пару раз.
 

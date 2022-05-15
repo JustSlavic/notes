@@ -407,7 +407,7 @@ void allocator_entry::set_occupied(bool occupied) {
 
 К следующему блоку нам перейти тоже не проблема, а вот к предыдущему уже более проблематично. Как быть? Давайте обрамлять выделенный участок памяти с двух сторон. Это вполне сработает.
 
-![How to go back to the previous entry by pointer to memory](free_without_loop.png "Locating previous entry by pointer")
+![How to go back to the previous entry by pointer to memory](free_without_loop_2.png "Locating previous entry by pointer")
 
 Сдвигаемся на 8 байт назад чтобы получить наш собственный размер блока. Сдвигаемся на ещё 8 байт назад, чтобы получить размер предыдущего блока. Теперь мы знаем какого размера сам предыдущий блок, и можем сдвинуться ещё пару раз.
 

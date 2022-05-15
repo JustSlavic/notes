@@ -350,11 +350,11 @@ struct {
 
 Если наша структура выглядит так, то она будет занимать 16 байт! Да, 1 бит `bool`'а добавил целых 7 байт, а всё из-за паддинга.
 
-[Struct padding of boolean](struct_padding.png "Struct padding of boolean")
+![Struct padding of boolean](struct_padding.png "Struct padding of boolean")
 
 А мы ведь вполне можем включить этот бит в те 64 бита размера. Да, размер теперь будет 63 бита, но ведь же никто не будет выделять больше, 9223 петабайт памяти в одном блоке, верно?
 
-[Including boolean into 64 bits](include_bool_in_64_bits.png "Include boolean as the first bit of size")
+![Including boolean into 64 bits](include_bool_in_64_bits.png "Include boolean as the first bit of size")
 
 Для этого нам придётся немножко подвигать битики. Сразу сделаем четыре функции:
 

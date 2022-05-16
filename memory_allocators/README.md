@@ -329,12 +329,11 @@ void *allocator_entry::get_memory_block() {
 Указатель на следующий блок нам тоже не нужен, ведь мы знаем размер выделенной под блок памяти? К тому же он всегда выровнен.
 
 ```c++
-allocator_entry *entry = ...;
 
-uint8_t *bytes = (uint8_t *) (entry + 1); // bytes point to the start of memory block
-bytes += entry->size; // now bytes point to the next entry
-
-allocator_entry *next_entry = (allocator_entry *) bytes;
+allocator_entry *allocator_entry::next_entry() {
+    uint8_t *bytes = (uint8_t *) get_memory_block() + size;
+    return (allocator_entry *) bytes;
+}
 ```
 
 ### Boolean
